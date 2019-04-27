@@ -20,9 +20,11 @@ from django.contrib.auth.views import LoginView,LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('login/',LoginView.as_view(), name='login'),
+    path('login/',LoginView.as_view(template_name='appuser/login.html'),name='login'),
     path('logout/',LogoutView.as_view(), name='logout'),
     path('oauth/',include('social_django.urls',namespace='social')),
+
     path('', include('appmain.urls')),
     # path('user/',include('appuser.urls')),
 ]
+
