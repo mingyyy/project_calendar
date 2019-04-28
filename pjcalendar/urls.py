@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth.views import LoginView,LogoutView
+from appmain.views import dashboard_view
 
 
 urlpatterns = [
@@ -23,6 +24,7 @@ urlpatterns = [
     path('login/',LoginView.as_view(template_name='appuser/login.html'),name='login'),
     path('logout/',LogoutView.as_view(), name='logout'),
     path('oauth/',include('social_django.urls',namespace='social')),
+    path('dashboard/',dashboard_view,name='dashboard'),
 
     path('', include('appmain.urls')),
     # path('user/',include('appuser.urls')),

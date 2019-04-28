@@ -1,6 +1,6 @@
 {% extends 'appmain/base.html' %}
 
 {% block content %}
-  <h2>Homepage</h2>
-  <p>Hello {{ user.username }}!</p>
+
+  <h2 class="mt-5 text-center">Welcome {{ request.user }}</h2>
 {% endblock %}
