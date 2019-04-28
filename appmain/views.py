@@ -54,3 +54,7 @@ def password_view(request):
     else:
         form = PasswordForm(request.user)
     return render(request, 'appmain/password.html', {'form': form})
+
+
+# def fb_view(request):
+#     return render(request, "appmain/fb.html")
