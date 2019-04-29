@@ -1,16 +1,68 @@
 {% extends 'appmain/base.html' %}
+{% load crispy_forms_tags %}
+{% load humanize %}
+
 {% block title %}
     <h2 class="mt-2 text-center">Visa Information</h2>
 {% endblock title %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-3">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <form action="" method="get">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit", value="Submit">
+            </form>
+        </div>
 
-    </div>
-    <div class="col-md-6">
+        <div class="col-md-6">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                <p><strong>Visa requirement:</strong> {{ requirement }}</p>
+                <p><strong>Allowed stay:</strong> {{ allowedstay}} </p>
+                <p><strong>Port Restriction:</strong> {{ portrestriction }}</p>
+                <p><strong>Type:</strong> {{ type }}</p>
+              </div>
+            </div>
 
+            {% if requirement == "EMBASSY_VISA" %}
+                <div class="alert alert-warning">
+                    {% for item in textual %}
+                      <p>{{item}}</p>
+                    {% endfor%}
+                </div>
+            {% elif requirement == "NOT_REQUIRED" %}
+                <div class="alert alert-success">
+                    {% for item in textual %}
+                      <p>{{item}}</p>
+                    {% endfor%}
+                </div>
+            {% elif requirement == "Unknown" %}
+                <div class="alert alert-secondary">
+                    Sorry, currently we don't have information on this country. Check back later on, please!
+                </div>
+            {% else%}
+                <div class="alert alert-info">
+                    {% for item in textual %}
+                      <p>{{item}}</p>
+                    {% endfor%}
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="col-md-3">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                <h4 style="text-center" class="border-bottom mb-2">{{ country_name }}</h4>
+                <p><strong>Capital:</strong> {{ country_capital }} </p>
+                <p><strong>Population:</strong> {{ country_population|intcomma }} </p>
+                <p><strong>Call code:</strong> {{ country_call_code }}</p>
+                <p><strong>Timezone:</strong> {{ country_timezone }}</p>
+              </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3"></div>
 </div>
 {% endblock %}
