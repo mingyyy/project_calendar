@@ -9,28 +9,7 @@
 {% block content %}
 <div class="container">
     <div class="row">
-        <div class="col-md-3">
-            <form action="" method="get">
-                {% csrf_token %}
-                {{ form|crispy }}
-                <input type="submit", value="Submit">
-            </form>
-        </div>
-
-        <div class="col-md-6">
-            <div class="jumbotron jumbotron-fluid">
-              <div class="container">
-                <p><strong>Visa requirement:</strong> {{ requirement }}</p>
-                <p><strong>Allowed stay:</strong> {{ allowedstay}} </p>
-                <p><strong>Port Restriction:</strong> {{ portrestriction }}</p>
-                <p class="border-bottom"><strong>Type:</strong> {{ type }}</p>
-                <p><strong>Passport validity:</strong> {{ passport_validity }}</p>
-                <p class="border-bottom"><strong>Passport blank pages:</strong> {{ passport_blank_pages }}</p>
-                <p><strong>Currency at Arrival:</strong> {{ currency_arrival }}</p>
-                <p><strong>Currency at Exit:</strong> {{ currency_exit }}</p>
-              </div>
-            </div>
-
+        <div class="col-md-12">
             {% if requirement == "EMBASSY_VISA" %}
                 <div class="alert alert-warning">
                     {% for item in textual %}
@@ -55,19 +34,49 @@
                 </div>
             {% endif %}
         </div>
-
+    </div>
+    <div class="row">
         <div class="col-md-3">
+            <form action="" method="get">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <input type="submit", value="Submit">
+            </form>
+        </div>
+
+        <div class="col-md-5">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                <p><strong>Visa requirement:</strong> {{ requirement }}</p>
+                <p><strong>Allowed stay:</strong> {{ allowedstay}} </p>
+                <p><strong>Port Restriction:</strong> {{ portrestriction }}</p>
+                <p class="border-bottom"><strong>Type:</strong> {{ type }}</p>
+                <p><strong>Passport validity:</strong> {{ passport_validity }}</p>
+                <p class="border-bottom"><strong>Passport blank pages:</strong> {{ passport_blank_pages }}</p>
+                <p><strong>Currency at Arrival:</strong> {{ currency_arrival }}</p>
+                <p><strong>Currency at Exit:</strong> {{ currency_exit }}</p>
+              </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
             <div class="jumbotron jumbotron-fluid">
               <div class="container">
                 <h4 style="text-center" class="border-bottom mb-2">{{ country_name }}</h4>
-                <p><strong>Capital:</strong> {{ country_capital }} </p>
-                {% if country_population >= 1000000 %}
-                  <p><strong>Population:</strong> {{ country_population|intword }} </p>
-                {% else %}
-                  <p><strong>Population:</strong> {{ country_population|intcomma }} </p>
-                {% endif %}
-                <p><strong>Call code:</strong> +{{ country_call_code }}</p>
-                <p><strong>Timezone:</strong> {{ country_timezone }}</p>
+                    <p><strong>Capital:</strong> {{ country_capital }} </p>
+                    {% if country_population >= 1000000 %}
+                      <p><strong>Population:</strong> {{ country_population|intword }} </p>
+                    {% else %}
+                      <p><strong>Population:</strong> {{ country_population|intcomma }} </p>
+                    {% endif %}
+                    <p><strong>Call code:</strong> +{{ country_call_code }}</p>
+                    <p class="border-bottom" ><strong>Timezone:</strong> {{ country_timezone }}</p>
+                    <p><strong>Current Weather:</strong>
+                        {% for desc in weather_desc %} {{ desc }} {% endfor %}
+                    </p>
+                    <p><strong>Current temperature:</strong> {{ weather_temp }} </p>
+                    <p><strong>(Min , Max):</strong> ({{ weather_temp_min }} , {{ weather_temp_max }})</p>
+                    <p><strong>Humidity:</strong> {{ weather_humidity }}%</p>
               </div>
             </div>
         </div>

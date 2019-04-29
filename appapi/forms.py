@@ -32,10 +32,10 @@ class EntryRequirementForm(Form):
     #                         help_text="Country code: VN for Vietname")
 
     citizenship = ChoiceField(label='Passport issued by which country?',
-                              choices=CITIZENSHIP_CHOICE)
+                              choices=CITIZENSHIP_CHOICE, initial="US")
 
     destination = ChoiceField(label='Which country are you visiting as a tourist?',
-                              choices=DESTINATION_CHOICE)
+                              choices=DESTINATION_CHOICE, initial="VN")
 
 
 def collect_names():
