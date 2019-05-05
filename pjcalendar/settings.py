@@ -38,11 +38,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
+    'django_tagify',
     'social_django',
     'crispy_forms',
+
     'appmain',
     'appuser',
     'appapi',
+    'appcal',
 ]
 
 MIDDLEWARE = [
@@ -147,9 +150,9 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,"/")
+STATIC_ROOT = os.path.join(BASE_DIR, "/")
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, "static/"),
 ]
 
 LOGIN_URL = 'login'

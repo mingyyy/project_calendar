@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'appmain/base.html' %}
 
-</body>
-</html>
+{% block content %}
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+        <br>
+        <button id="js-btn"> Click Me</button>
+        <br>
+        <h1 style="text-align:center; color:white;" id="hidden"> I was hidden</h1>
+
+    </div>
+    <div class="col-md-3"></div>
+</div>
+{% endblock %}

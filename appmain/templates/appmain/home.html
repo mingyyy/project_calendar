@@ -1,6 +1,27 @@
 {% extends 'appmain/base.html' %}
 
+
 {% block content %}
 
   <h2 class="mt-5 text-center">Welcome {{ request.user }}</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+
+          <div class="form-group">
+            <input name="tags" placeholder="write some tags" value="{{country_list}}">
+            <script>
+              $('[name=tags]')
+                  .tagify()
+                  .on('add', function(e, tagName){
+                      console.log('added', tagName)
+                  });
+            </script>
+
+          </div>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
 {% endblock %}

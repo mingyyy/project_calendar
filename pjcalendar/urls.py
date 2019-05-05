@@ -28,7 +28,8 @@ urlpatterns = [
     path('settings/', settings_view, name='settings'),
     path('password/', password_view, name='password'),
     path('', include('appmain.urls')),
-    path('',include('appapi.urls')),
+    path('', include('appapi.urls')),
+    path('', include(('appcal.urls'))),
     # path('fb/', fb_view, name='fb')
     # path('user/',include('appuser.urls')),
 ]
