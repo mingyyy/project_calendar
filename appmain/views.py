@@ -3,12 +3,28 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
-
+from .forms import FormCountry
+import json, os
 from social_django.models import UserSocialAuth
+from pjcalendar.settings import BASE_DIR
 
 
 def home(request):
-    return render(request, 'appmain/home.html')
+    filepath = os.path.join(BASE_DIR, "appmain/static/appmain/countries.min.json")
+    with open(filepath, "r") as f:
+        country_file = json.load(f)
+    country_list=[]
+    for k, v in country_file.items():
+        country_list.append(k)
+
+
+    # if request.method == "GET":
+    #     form_country = request.GET["country"]
+    # else:
+    #     form_country = FormCountry()
+    # context = {"country_city":country_file, "form_country":form_country}
+    context = {"country_list": country_list}
+    return render(request, 'appmain/home.html', context)
 
 @login_required
 def dashboard_view(request):
@@ -54,7 +70,3 @@ def password_view(request):
     else:
         form = PasswordForm(request.user)
     return render(request, 'appmain/password.html', {'form': form})
-
-
-# def fb_view(request):
-#     return render(request, "appmain/fb.html")

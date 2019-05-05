@@ -111,6 +111,6 @@ def visa_view(request):
     return render(request, "appapi/visa.html", context)
 
 
-def weather_view(request):
+def cities_view(request):
 
-    return render(request, "appapi/weather.html")
+    return render(request, "appapi/cities.html")
