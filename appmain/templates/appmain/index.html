@@ -1,0 +1,22 @@
+{% extends 'appmain/base.html' %}
+
+{% load static %}
+{% block content %}
+
+  <h2 class="mt-5 text-center">Welcome {{ request.user }}</h2>
+<div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+         <script src="{% static 'ktag/js/tagify.min.js' %}"> </script>
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <br>
+            <input type="submit" value="OK" style="font-size: larger">
+        </form>
+    </div>
+    <div class="col-md-3"></div>
+</div>
+
+
+{% endblock %}

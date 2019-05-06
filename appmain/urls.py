@@ -5,4 +5,5 @@ app_name = "appmain"
 
 urlpatterns = [
     path('', home, name="home"),
+    # path('index/', index, name="index"),
 ]
