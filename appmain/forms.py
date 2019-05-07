@@ -28,8 +28,7 @@ def get_city_list(CF, country):
 
 
 class FormCountry(forms.Form):
-    country = TagField(label='Country:', place_holder='write the name of the country', delimiters=',',
-                          data_list=get_country_list(CF), initial='Canada', max_tags=1,
+    country = TagField(label='Country:', delimiters=',', data_list=get_country_list(CF), initial='Canada', max_tags=1,
                        help_text="Only one is allowed for the city list.")
 
 
@@ -38,11 +37,13 @@ class FormCity(forms.Form):
     def __init__(self, *args, **kwargs):
         self.country = kwargs.pop('country')
         super(FormCity, self).__init__(*args, **kwargs)
-        self.fields['city'] = TagField(label='Choose from the city list:', place_holder='write the name of the cities', delimiters=',',
-                  initial='Toronto, Ottawa', data_list=get_city_list(CF, self.country), help_text="Not more than 5 cities are allowed")
+        self.fields['city'] = TagField(label='Choose from the city list:',
+                                       delimiters=',',initial='Toronto, Ottawa', data_list=get_city_list(CF, self.country),
+                                       max_tags=5, help_text="Not more than 5 cities are allowed")
 
-    city = TagField(label='Choose from the city list:', place_holder='write the name of the cities', delimiters=',',max_tags=5,
-                initial='Toronto, Ottawa')
+    city = TagField(label='Choose from the city list:',
+                           delimiters=',',initial='Toronto, Ottawa',
+                           max_tags=5, help_text="Not more than 5 cities are allowed")
 
 
 

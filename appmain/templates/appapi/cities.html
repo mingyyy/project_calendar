@@ -1,10 +1,14 @@
 {% extends 'appmain/base.html' %}
-
+{{ form.media}}
 {% block content %}
 <div class="row">
     <div class="col-md-3"></div>
     <div class="col-md-6">
-   
+        <form action="" method="post">
+            {% crsf_token %}
+            {{ form }}
+            <input type="submit" class="btn btn-info" value="submit">
+        </form>
     </div>
     <div class="col-md-3"></div>
 </div>

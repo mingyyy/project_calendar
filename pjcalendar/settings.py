@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = secret.KEY
-
+GOOGLE_API_KEY = secret.GOOGLE_API_KEY
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['*']
@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.humanize',
 
     'ktag',
-    "address",
+    # 'address',
     'social_django',
     'crispy_forms',
 

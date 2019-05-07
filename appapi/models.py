@@ -1,3 +1,6 @@
 from django.db import models
-
-# Create your models here.
+# from address.models import  AddressField
+#
+#
+# class Person(models.Model):
+#     address = AddressField()

@@ -1,5 +1,8 @@
 from django.forms import Form, ChoiceField
 import requests, json
+# from address.forms import AddressField
+
+
 # in total 222 countries
 DESTINATION_LIST = ['AD', 'AE', 'AF', 'AG', 'AI', 'AL', 'AM', 'AO', 'AR', 'AS', 'AT', 'AU', 'AW', 'AZ', 'BA',
            'BB', 'BD', 'BE', 'BF', 'BG', 'BH', 'BI', 'BJ', 'BM', 'BN', 'BO', 'BR', 'BS', 'BT', 'BW',
@@ -45,3 +48,30 @@ def collect_names():
         if country["alpha2Code"] in DESTINATION_LIST:
             name_map.append((country["alpha2Code"], f"{country['alpha2Code']} - {country['alpha2Code']}"))
     print(name_map)
+
+
+# class PersonForm(Form):
+#     address = AddressField(label='Enter your address:')
+
+TOPIC_LIST = {"A": ['Activism', 'Addiction', 'Adventure', 'Advertising', 'Africa', 'Aging', 'Agriculture',
+                    'AI', 'AIDS', 'Aircraft', 'Algorithm', 'Alternative energy', "Alzheimer's", 'Ancient world',
+                    'Animals', 'Animation', 'Antarctica', 'Anthropocene', 'Anthropology', 'Ants', 'Apes',
+                    'Archaeology', 'Architecture', 'Art', 'Arts', 'Asia', 'Asteroid', 'Astrobiology',
+                    'Astronomy', 'Atheism', 'Audacious Project', 'Augmented reality', 'Autism',
+                    'Autism spectrum disorder'],
+              "B": []
+
+
+}
+
+EXPERTISE_LIST = ['Accounting & Auditing', 'Admin & Clerical', 'Automotive', 'Banking', 'Biotech', 'Broadcast',
+                  'Business Development', 'Construction', 'Consultant', 'Customer Service', 'Design', 'Distribution',
+                  'Education', 'Engineering', 'Entry Level', 'Executive', 'Facilities', 'Finance', 'Franchise',
+                  'General Business', 'General Labor', 'Government', 'Grocery', 'Health Care', 'Hospitality',
+                  'Hotel', 'Human Resources', 'Information Technology', 'Installation', 'Insurance', 'Inventory',
+                  'Journalism', 'Journalism', 'Legal', 'Legal Admin', 'Maint', 'Management', 'Manufacturing',
+                  'Marketing', 'Media', 'New Grad', 'Newspaper', 'Nonprofit', 'Nurse', 'Other', 'Pharmaceutical',
+                  'Planning', 'Procurement', 'Professional Services', 'Purchasing', 'QA', 'Quality Control',
+                  'Real Estate', 'Repair', 'Research', 'Restaurant - Food Service', 'Retail', 'Sales', 'Science',
+                  'Shipping', 'Skilled Labor', 'Social Services', 'Strategy', 'Supply Chain', 'Teaching',
+                  'Telecommunications', 'Trades', 'Training', 'Transportation', 'Warehouse']

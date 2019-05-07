@@ -111,6 +111,13 @@ def visa_view(request):
     return render(request, "appapi/visa.html", context)
 
 
-def cities_view(request):
-
-    return render(request, "appapi/cities.html")
+# def cities_view(request):
+#     input_address = ''
+#     if request.method == 'POST':
+#         form = PersonForm(request.POST)
+#         if form.is_valid():
+#             input_address = form.cleaned_data['address']
+#     else:
+#         form = PersonForm()
+#     context = {form:'form', 'input_address':'input_address'}
+#     return render(request, "appapi/cities.html", context)
