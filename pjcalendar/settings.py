@@ -27,8 +27,6 @@ GOOGLE_API_KEY = secret.GOOGLE_API_KEY
 DEBUG = True
 ALLOWED_HOSTS = ['*']
 
-GOOGLE_API_KEY = secret.GOOGLE_API_KEY
-
 # Application definition
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -117,6 +115,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.github.GithubOAuth2',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.facebook.FacebookOAuth2',
@@ -178,11 +177,11 @@ SOCIAL_AUTH_TWITTER_SECRET = secret.TWITTER_SECRET
 
 SOCIAL_AUTH_FACEBOOK_KEY = secret.FACEBOOK_KEY
 SOCIAL_AUTH_FACEBOOK_SECRET = secret.FACEBOOK_SECRET
-FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+'fields': 'name, email, age_range'}
+# FACEBOOK_EXTENDED_PERMISSIONS = ['email']
+# SOCIAL_AUTH_FACEBOOK_API_VERSION = '3.2'
 
-# SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
-# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-# 'fields': 'name, email, age_range'}
-SOCIAL_AUTH_FACEBOOK_API_VERSION = '3.2'
-
-
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = ''
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = ''
